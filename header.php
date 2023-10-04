@@ -3,7 +3,7 @@
 /**
  * Template Name:Bubble
  * Description:清新风格响应式主题，化繁为简，如沐清风。
- * Version:0.1
+ * Version:0.1.0
  * Template Url:https://www.emlog.net/template/detail/
  * Author:UTF-X
  * Author Url:https://www.utf-x.cn/
