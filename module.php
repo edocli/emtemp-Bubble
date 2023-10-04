@@ -400,9 +400,10 @@ function threadedComments($comments, $children)
                             <?php if ($verifyCode): ?>
                                 <div class="input-group">
                                     <img src="http://localhost/include/lib/checkcode.php" id="captcha" alt="验证码">
-                                    <input type="url" name="imgcode" class="form-control"
+                                    <input type="text" name="imgcode" class="form-control"
                                            maxlength="5"
-                                           placeholder="验证码"/>
+                                           placeholder="验证码"
+                                           required/>
                                 </div>
                             <?php endif; ?>
                             <p>
