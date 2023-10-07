@@ -62,7 +62,7 @@ function printAricle($value, $flag)
         <object class="section">
             <div class="container">
                 <div class="content list-card-content">
-                    <h1><?= $value['log_title'] ?></h1>
+                    <h1><?= $value['log_title'] ?><?php topflg($value['top'], $value['sortop'], isset($sortid) ? $sortid : '') ?></h1>
                     <div class="list-object">
                         <span class="list-tag"><i class="fa fa-calendar-o" aria-hidden="true"></i> <time
                                     datetime="<?= date('c', $value['date']) ?>"><?= date('Y-n-j', $value['date']) ?></time></span>
@@ -611,3 +611,15 @@ function widget_archive($title)
         </ul>
     </div>
 <?php } ?>
+
+<?php
+
+function topflg($top, $sortop = 'n', $sortid = null) {
+    $ishome_flg = ' <small><i class="fa fa-bookmark"></i></small>';
+    $issort_flg = ' <small><i class="fa fa-bookmark"></i></small>';
+    if (blog_tool_ishome()) {
+        echo $top == 'y' ? $ishome_flg : '';
+    } elseif ($sortid) {
+        echo $sortop == 'y' ? $issort_flg : '';
+    }
+}

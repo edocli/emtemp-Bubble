@@ -59,7 +59,6 @@ if (!defined('EMLOG_ROOT')) {
                         break
                     }
                 }
-                //
             })
         });
     </script>
