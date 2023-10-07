@@ -4,28 +4,25 @@ if (!defined('EMLOG_ROOT')) {
 }
 ?>
 <div class="row">
-    <div class="col-md-4 widget">
-        <h5>最新评论</h5>
-        <?php $comments_recent = $this->widget('Widget_Comments_Recent', 'pageSize=5');
-        if ($comments_recent->have()) {
-            _e('<ul>');
-            while ($comments_recent->next()) {
-                _e('<li><a href="' . "$comments_recent->permalink" . '" class="footer-link">' . "$comments_recent->author" . ': ');
-                $comments_recent->excerpt(35, '...');
-                _e('</a></li>');
+    <?php
+    $widgets = !empty($options_cache['widgets1']) ? unserialize($options_cache['widgets1']) : array();
+    doAction('diff_side');
+    foreach ($widgets as $val) {
+        $widget_title = @unserialize($options_cache['widget_title']);
+        $custom_widget = @unserialize($options_cache['custom_widget']);
+        if (strpos($val, 'custom_wg_') === 0) {
+            $callback = 'widget_custom_text';
+            if (function_exists($callback)) {
+                call_user_func($callback, htmlspecialchars($custom_widget[$val]['title']), $custom_widget[$val]['content']);
             }
-            _e('</ul>');
         } else {
-            _e('暂无评论');
+            $callback = 'widget_' . $val;
+            if (function_exists($callback)) {
+                preg_match("/^.*\s\((.*)\)/", $widget_title[$val], $matchs);
+                $wgTitle = isset($matchs[1]) ? $matchs[1] : $widget_title[$val];
+                call_user_func($callback, htmlspecialchars($wgTitle));
+            }
         }
-        ?>
-    </div>
-    <div class="col-md-4 widget">
-        <h5>最新文章</h5>
-        <ul><?php $this->widget('Widget_Contents_Post_Recent', 'pageSize=6')->parse('<li><a href="{permalink}" class="footer-link">{title}</a></li>'); ?></ul>
-    </div>
-    <div class="col-md-4 widget">
-        <h5>近期归档</h5>
-        <ul><?php $this->widget('Widget_Contents_Post_Date', 'limit=6&type=month&format=F Y')->parse('<li><a href="{permalink}" class="footer-link">{date}</a></li>'); ?></ul>
-    </div>
+    }
+    ?>
 </div>

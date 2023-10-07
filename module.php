@@ -186,9 +186,7 @@ function getCatalog(&$obj)
             $index .= '<li><a name="dl-' . $catalog_item['count'] . '" href="javascript:jumpto(' . $catalog_item['count'] . ')">' . $catalog_item['text'] . '</a>';
             $prev_depth = $catalog_item['depth'];
         }
-        for ($i = 0; $i <= $to_depth; $i++) {
-            $index .= '</li>' . "\n" . '</ul>' . "\n";
-        }
+        $index .= str_repeat('</li>' . "\n" . '</ul>' . "\n", $to_depth + 1);
     }
     echo $index;
 }
@@ -353,7 +351,7 @@ function threadedComments($comments, $children)
                                         <div class="form-group">
                                             <div class="input-group mb-4">
                                                 <div class="input-group-prepend">
-											<span class="input-group-text" style="padding: 0rem .5rem;">
+											<span class="input-group-text" style="padding: 0 .5rem;">
             									<div id="author-head" class="icon-shape rounded-circle text-white"
                                                      style="width: 2rem;height: 2rem;background-image: url(//cravatar.cn/avatar/);background-position: center;background-size: cover;background-repeat: no-repeat;"></div>
             								</span>
@@ -431,9 +429,9 @@ function threadedComments($comments, $children)
             },
 
             create: function (tag, attr) {
-                var el = document.createElement(tag);
+                let el = document.createElement(tag);
 
-                for (var key in attr) {
+                for (let key in attr) {
                     el.setAttribute(key, attr[key]);
                 }
 
@@ -441,9 +439,9 @@ function threadedComments($comments, $children)
             },
 
             reply: function (cid, coid) {
-                var comment = this.dom(cid),
+                let comment = this.dom(cid),
                     response = this.dom('respond-post'), input = this.dom('comment-parent'),
-                    form = 'form' == response.tagName ? response : response.getElementsByTagName('form')[0],
+                    form = 'form' === response.tagName ? response : response.getElementsByTagName('form')[0],
                     textarea = response.getElementsByTagName('textarea')[0];
 
                 if (null == input) {
@@ -459,7 +457,7 @@ function threadedComments($comments, $children)
                 input.setAttribute('value', coid);
 
                 if (null == this.dom('comment-form-place-holder')) {
-                    var holder = this.create('div', {
+                    let holder = this.create('div', {
                         'id': 'comment-form-place-holder'
                     });
 
@@ -469,7 +467,7 @@ function threadedComments($comments, $children)
                 comment.appendChild(response);
                 this.dom('cancel-comment-reply-link').style.display = '';
 
-                if (null != textarea && 'text' == textarea.name) {
+                if (null != textarea && 'text' === textarea.name) {
                     textarea.focus();
                 }
 
@@ -480,7 +478,7 @@ function threadedComments($comments, $children)
 
             cancelReply: function () {
                 $("#comment-pid").attr("value", 0);
-                var response = this.dom('respond-post'),
+                let response = this.dom('respond-post'),
                     holder = this.dom('comment-form-place-holder'), input = this.dom('comment-parent');
 
                 if (null != input) {
@@ -498,16 +496,16 @@ function threadedComments($comments, $children)
         };
 
         $("#mail").on('blur', function () {
-            url = "//cravatar.cn/avatar/" + md5($(this).val()) + "?s=40&d="
+            let url = "//cravatar.cn/avatar/" + md5($(this).val()) + "?s=40&d=";
             $("#author-head").css('background-image', 'url(' + url + ')');
         })
 
-        var myBlog = {
+        let myBlog = {
             /**
              * 提交评论前对表单的验证
              */
             comTip: '', comSubmitTip: function (value) {
-                if (value == 'judge') {
+                if (value === 'judge') {
                     let cnReg = /[\u4e00-\u9fa5]/
                     let mailReg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/
                     let urlReg = /[^\s]*\.+[^\s]/
@@ -517,17 +515,17 @@ function threadedComments($comments, $children)
                     let mail = $('#mail').val()
                     let url = $('#url').val()
 
-                    if (isCn == 'y' && !cnReg.test(comContent)) {
+                    if (isCn === 'y' && !cnReg.test(comContent)) {
                         this.comTip = "评论内容需要包含中文！"
-                    } else if (typeof mail !== "undefined" && mail != '' && !mailReg.test(mail)) {
+                    } else if (typeof mail !== "undefined" && mail !== '' && !mailReg.test(mail)) {
                         this.comTip = "邮箱格式错误！"
-                    } else if (typeof url !== "undefined" && url != '' && !urlReg.test(url)) {
+                    } else if (typeof url !== "undefined" && url !== '' && !urlReg.test(url)) {
                         this.comTip = "网址格式错误！"
                     } else {
                         this.comTip = ''
                     }
                 } else {
-                    if (this.comTip != '') {
+                    if (this.comTip !== '') {
                         alert(this.comTip)
                         return false
                     } else {
@@ -539,10 +537,10 @@ function threadedComments($comments, $children)
              * 点击刷新验证码
              */
             captchaRefresh: function ($t) {
-                var timestamp = new Date().getTime()
+                let timestamp = new Date().getTime();
                 $t.attr("src", "/include/lib/checkcode.php?" + timestamp)
             },
-        }
+        };
 
         /**
          * 事件监听
@@ -557,4 +555,59 @@ function threadedComments($comments, $children)
             })
         })
     </script>
+<?php } ?>
+
+<?php function widget_newcomm($title)
+{
+    global $CACHE;
+    $com_cache = $CACHE->readCache('comment');
+    $isGravatar = Option::get('isgravatar');
+    ?>
+    <div class="col-md-4 widget">
+        <h5><?= $title ?></h5>
+        <ul>
+            <?php
+            foreach ($com_cache as $value):
+                $url = Url::comment($value['gid'], $value['page'], $value['cid']);
+                ?>
+                <li>
+                    <a href="<?= $url ?>" class="footer-link"><b><?= $value['name'] ?>: </b><?= $value['content'] ?></a>
+                </li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+<?php } ?>
+
+<?php
+function widget_newlog($title)
+{
+    global $CACHE;
+    $newLogs_cache = $CACHE->readCache('newlog');
+    ?>
+    <div class="col-md-4 widget">
+        <h5><?= $title ?></h5>
+        <ul>
+            <?php foreach ($newLogs_cache as $value): ?>
+                <li><a href="<?= Url::log($value['gid']) ?>" class="footer-link"><?= $value['title'] ?></a></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+<?php } ?>
+
+<?php
+function widget_archive($title)
+{
+    $bar_id = "36";
+    global $CACHE;
+    $record_cache = $CACHE->readCache('record');
+    ?>
+    <div class="col-md-4 widget">
+        <h5><?= $title ?></h5>
+        <ul>
+            <?php foreach ($record_cache as $value): ?>
+                <li><a href="<?= Url::record($value['date']) ?>" class="footer-link"><?= $value['record'] ?>
+                        &nbsp;(<?= $value['lognum'] ?>)</a></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
 <?php } ?>

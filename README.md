@@ -184,7 +184,7 @@ Open sourced under the `GNU GPL v3.0` license.
 
 + 模板移植自由[三硝基豆腐](https://github.com/trinitrotofu)、[Rorical](https://github.com/Liupaperbox)和[Totorato](https://github.com/totorato)三人共同完成的Typecho [Bubble](https://github.com/trinitrotofu/Bubble)主题
 + 模板基于[Argon Design System](https://www.creative-tim.com/product/argon-design-system)
-+ 评论模块中部分代码参照了 EMLOG 官方模板 Default
++ 部分代码参照了 EMLOG 官方模板 Default
 
 # 更新历史
 
