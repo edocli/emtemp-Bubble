@@ -40,7 +40,7 @@ function printAricle($value, $flag)
         <object class="list-image-card-section">
             <div class="container">
                 <div class="content list-card-content">
-                    <h1><?= $value['log_title'] ?></h1>
+                    <h1><?= $value['log_title'] ?><?php topflg($value['top'], $value['sortop'], isset($sortid) ? $sortid : '') ?></h1>
                     <div class="list-object">
                         <span class="list-tag"><i class="fa fa-calendar-o" aria-hidden="true"></i> <time
                                     datetime="<?= date('c', $value['date']) ?>"><?= date('Y-n-j', $value['date']) ?></time></span>
@@ -51,7 +51,7 @@ function printAricle($value, $flag)
                         <span class="list-tag"><i class="fa fa-user-o"
                                                   aria-hidden="true"></i> <?php blog_author($value['author']); ?></span>
                     </div>
-                    <?= $value['log_description'] ?>
+                    <?= _g('subContent') ? subContent($value['log_description'],_g('subContentLen')?:200,1) : $value['log_description'] ?>
                 </div>
             </div>
         </object>
@@ -73,7 +73,7 @@ function printAricle($value, $flag)
                         <span class="list-tag"><i class="fa fa-user-o"
                                                   aria-hidden="true"></i> <?php blog_author($value['author']); ?></span>
                     </div>
-                    <?= $value['log_description'] ?>
+                    <?= _g('subContent') ? subContent($value['log_description'],_g('subContentLen')?:200,1) : $value['log_description'] ?>
                 </div>
             </div>
         </object>

@@ -21,8 +21,7 @@ if (!defined('EMLOG_ROOT')) {
                         <a class="nav-link" href="<?php echo BLOG_URL ?>">首页</a>
                     </li>
                     <?php if (ISLOGIN): ?>
-                        <li class="nav-item"><a class="nav-link" href="/admin">进入后台(<?= getUser(UID)['nickname'] ?>
-                                )</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin">进入后台(<?= getUser(UID)['nickname'] ?>)</a></li>
                         <li class="nav-item"><a class="nav-link" href="/admin/account.php?action=logout">退出</a></li>
                     <?php else: ?>
                         <li class="nav-item"><a class="nav-link" href="/admin">登录</a></li>

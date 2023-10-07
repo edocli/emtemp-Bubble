@@ -42,7 +42,7 @@ $options = [
         'type' => 'checkon',
         'name' => '背景气泡',
         'values' => [
-            '1' => 'on',
+            '1' => 1,
         ],
         'description' => '选择是否在首页以及文章页顶部背景处显示半透明气泡'
     ],
@@ -58,7 +58,7 @@ $options = [
         'type' => 'checkon',
         'name' => 'Pjax 无刷新加载',
         'values' => [
-            '1' => 'on',
+            '1' => 1,
         ],
         'description' => '选择是否启用全站 Pjax 无刷新加载模式提升用户访问体验。<strong>（注意：可能会导致部分插件失效，可设置回调函数解决问题）</strong>'
     ],
@@ -74,7 +74,7 @@ $options = [
         'type' => 'checkon',
         'name' => 'KaTeX 数学公式渲染',
         'values' => [
-            '1' => 'on',
+            '1' => 1,
         ],
         'description' => '选择是否启用 KaTeX 数学公式渲染'
     ],
@@ -83,7 +83,7 @@ $options = [
         'type' => 'checkon',
         'name' => 'prism.js 代码高亮',
         'values' => [
-            '1' => 'on',
+            '1' => 1,
         ],
         'description' => '选择是否启用 prism.js 代码高亮'
     ],
@@ -92,7 +92,7 @@ $options = [
         'type' => 'checkon',
         'name' => 'prism.js 代码行号',
         'values' => [
-            '1' => 'on',
+            '1' => 1,
         ],
         'description' => '选择是否启用 prism.js 代码行号'
     ],
@@ -117,7 +117,7 @@ $options = [
         'type' => 'checkon',
         'name' => 'viewer.js 图片查看器',
         'values' => [
-            '1' => 'on',
+            '1' => 1,
         ],
         'description' => '选择是否启用 viewer.js 图片查看器（点击放大）'
     ],
@@ -126,7 +126,7 @@ $options = [
         'type' => 'checkon',
         'name' => 'toc文章目录',
         'values' => [
-            '1' => 'on',
+            '1' => 1,
         ],
         'description' => '选择是否启用toc文章目录'
     ],
@@ -135,8 +135,24 @@ $options = [
         'type' => 'checkon',
         'name' => 'toc文章目录默认展开',
         'values' => [
-            '1' => 'on',
+            '1' => 1,
         ],
         'description' => '选择是否启用toc文章目录默认展开'
+    ],
+    'subContent' => [
+        'labels' => 'setting',
+        'type' => 'checkon',
+        'name' => '自动截取摘要',
+        'default' => 0,
+        'values' => [
+            '1' => 1,
+        ],
+        'description' => '文章自动截取摘要（关闭后若文章未手动设置摘要则显示全文）,<b>注意：开启后摘要将丢失样式，建议关闭此功能手动设置摘要以获得更好的浏览体验</b>'
+    ],
+    'subContentLen' => [
+        'labels' => 'setting',
+        'type' => 'text',
+        'name' => '自动摘要截取长度',
+        'description' => '在这里填入一个数字，以设定摘要截取长度，留空则默认截取 200 个字符'
     ],
 ];

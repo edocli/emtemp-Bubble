@@ -3,7 +3,7 @@
 /**
  * Template Name:Bubble
  * Description:清新风格响应式主题，化繁为简，如沐清风。
- * Version:0.1.0
+ * Version:0.1.1
  * Template Url:https://www.emlog.net/template/detail/1120
  * Author:UTF-X
  * Author Url:https://www.utf-x.cn/
@@ -113,8 +113,6 @@ require_once View::getView('module');
                             <button type="button" class="navbar-toggler" data-toggle="collapse"
                                     data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false"
                                     aria-label="Toggle navigation">
-                                <span></span>
-                                <span></span>
                             </button>
                         </div>
                     </div>
@@ -123,7 +121,7 @@ require_once View::getView('module');
                     <?php blog_navi(); ?>
                     <?php doAction('index_navi_ext') ?>
                     <li class="navbar_search_container">
-                        <form method="post" action="" id="search">
+                        <form method="post" id="search">
                             <div class="input-group input-group-alternative">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-search"></i></span>
