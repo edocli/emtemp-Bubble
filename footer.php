@@ -6,6 +6,7 @@ if (!defined('EMLOG_ROOT')) {
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
+        <?php include View::getView('side') ?>
         <hr/>
         <div class="row">
             <div class="col-md-6">
@@ -43,15 +44,15 @@ if (!defined('EMLOG_ROOT')) {
 <!-- Optional plugins -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js"></script>
 <!-- Theme JS -->
-<script src="<?php echo TEMPLATE_URL ?>assets/js/argon.min.js"></script>
-<script src="<?php echo TEMPLATE_URL ?>assets/js/bbrender.js"></script>
+<script src="<?= TEMPLATE_URL ?>assets/js/argon.min.js"></script>
+<script src="<?= TEMPLATE_URL ?>assets/js/bbrender.js"></script>
 <!-- scrollup -->
 <script>
     $(function () {
-        var scrollBottom = parseInt($("#adminbtn").css("bottom")) + parseInt($("#adminbtn").css("height")) + 25;
+        let scrollBottom = parseInt($("#adminbtn").css("bottom")) + parseInt($("#adminbtn").css("height")) + 25;
         $("#scrollbtn").css("bottom", scrollBottom);
-        var resizeTimer;
-        $(window).resize(function (e) {
+        let resizeTimer;
+        $(window).resize(function () {
             if ($("#adminbtn").length > 0) {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(function () {
@@ -60,7 +61,7 @@ if (!defined('EMLOG_ROOT')) {
                 }, 250);
             }
         });
-        var scrollLock = 0;
+        let scrollLock = 0;
         if ($(window).scrollTop() > 500) $("#scrollup").fadeIn(400);
         $(window).scroll(function () {
             if (!scrollLock) {
@@ -82,10 +83,10 @@ if (!defined('EMLOG_ROOT')) {
 <script>
     function init() {
         <?php if(_g('prismjs') and _g('prismLine')): ?>
-        var pres = document.querySelectorAll('pre');
-        var lineNumberClassName = 'line-numbers';
-        pres.forEach(function (item, index) {
-            item.className = item.className == '' ? lineNumberClassName : item.className + ' ' + lineNumberClassName;
+        let pres = document.querySelectorAll('pre');
+        let lineNumberClassName = 'line-numbers';
+        pres.forEach(function (item) {
+            item.className = item.className === '' ? lineNumberClassName : item.className + ' ' + lineNumberClassName;
         });
         Prism.highlightAll(false, null);
         <?php endif; ?>
@@ -136,13 +137,13 @@ if (!defined('EMLOG_ROOT')) {
     <?php if (_g('viewerEnable')): ?>
     function destroy() {
         // viewerjs
-        var viewer = $('.content').data('viewer');
+        let viewer = $('.content').data('viewer');
         if (viewer) {
             viewer.destroy()
         }
     }
 
-    window.addEventListener("popstate", function (e) {
+    window.addEventListener("popstate", function () {
         setTimeout(() => {
             $('.content').viewer({
                 url: 'data-src'
@@ -155,7 +156,7 @@ if (!defined('EMLOG_ROOT')) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
     <script src="<?= TEMPLATE_URL ?>assets/js/progress.js"></script>
     <script>
-        var pgid = 0
+        let pgid = 0;
         $(document).pjax('a[href^="<?= BLOG_URL ?>"]:not(a[target="_blank"], a[no-pjax], a[href^="<?= BLOG_URL ?>admin"])',
             {
                 container: '#pjax-container',
@@ -177,9 +178,9 @@ if (!defined('EMLOG_ROOT')) {
 
         })
         $("#search").submit(function () {
-            var att = $(this).serializeArray()
-            for (var i in att) {
-                if (att[i].name == "s") {
+            let att = $(this).serializeArray();
+            for (let i in att) {
+                if (att[i].name === "s") {
                     $.pjax({
                         url: "<?= BLOG_URL ?>?keyword=" + att[i].value,
                         container: '#pjax-container',
@@ -210,11 +211,11 @@ if (!defined('EMLOG_ROOT')) {
     <?php endif; ?>
 <?php endif; ?>
 <!-- Alert -->
-<div id="modal-notification" class="modal fade show" id="modal-notification" style="z-index: 102;display: none;">
+<div id="modal-notification" class="modal fade show" style="z-index: 102;display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="msgMain" class="modal-title" id="mySmallModalLabel"></h5>
+                <h5 id="msgMain" class="modal-title"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                         onclick="$('#modal-notification').hide('normal');">
                     <span aria-hidden="true">×</span>

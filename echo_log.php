@@ -18,7 +18,7 @@ if (!defined('EMLOG_ROOT')) {
         </div>
     </div>
     <script>
-        var onshow = false;
+        let onshow = false;
 
         function tocshow() {
             if (onshow) {
@@ -38,19 +38,17 @@ if (!defined('EMLOG_ROOT')) {
         }
 
         $("#toc-nomiao").click(tocshow)
-        var nowtoc = "cl-1"
+        let nowtoc = "cl-1";
         $(document).ready(function () {
             <?php if (_g('toc_enable')) : ?>
             tocshow()
             <?php endif; ?>
             $(document).scroll(function () {
-                for (var ele of $("*[name*='cl-']").get().reverse()) {
+                for (const ele of $("*[name*='cl-']").get().reverse()) {
                     if ($(document).scrollTop() + 121 > $(ele).offset().top) {
-                        if (nowtoc != ele.name) {
-                            var tocele = $("*[name*='dl-" + nowtoc.replace("cl-", "") + "']")
+                        if (nowtoc !== ele.name) {
+                            let tocele = $("*[name*='dl-" + nowtoc.replace("cl-", "") + "']");
                             tocele.removeClass("located")
-
-
                             tocele = $("*[name*='dl-" + ele.name.replace("cl-", "") + "']")
                             tocele.addClass("located")
                             $(".toc-list").animate({
@@ -83,28 +81,28 @@ if (!defined('EMLOG_ROOT')) {
         </div>
     </section>
     <section class="section section-components bg-secondary content-card-container">
-    <div class="container container-lg py-5 align-items-center content-card-container">
-        <div class="card shadow content-card content-card-head">
-            <!-- Article content -->
-            <section class="section">
-                <div class="container">
-                    <div class="content">
-                        <?= $log_content ?>
-                        <?php doAction('log_related', $logData) ?>
-                        <hr>
-                        <ul>
-                            <li>分类：<?php printCategory($sortid); ?></li>
-                            <li>标签：<?php printTag($logid); ?></li>
-                        </ul>
+        <div class="container container-lg py-5 align-items-center content-card-container">
+            <div class="card shadow content-card content-card-head">
+                <!-- Article content -->
+                <section class="section">
+                    <div class="container">
+                        <div class="content">
+                            <?= $log_content ?>
+                            <?php doAction('log_related', $logData) ?>
+                            <hr>
+                            <ul>
+                                <li>分类：<?php printCategory($sortid); ?></li>
+                                <li>标签：<?php printTag($logid); ?></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
+            <div class="card shadow content-card">
+                <!-- Comment -->
+                <?php viewComment($comnum, $comments, $logid, $ckname, $ckmail, $ckurl, $verifyCode, $allow_remark); ?>
+            </div>
         </div>
-        <div class="card shadow content-card">
-            <!-- Comment -->
-            <?php viewComment($comnum, $comments, $logid, $ckname, $ckmail, $ckurl, $verifyCode, $allow_remark); ?>
-        </div>
-    </div>
     </section>
 
 <?php
