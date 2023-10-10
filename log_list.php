@@ -33,7 +33,7 @@ if (!defined('EMLOG_ROOT')) {
     </section>
 <?php else: ?>
     <section class="section section-lg section-hero section-shaped">
-        <?php printBackground(getRandomImage(_g('randomImag')), _g('bubbleShow')); ?>
+        <?php printBackground(getRandomImage(_g('randomImage')), _g('bubbleShow')); ?>
         <div class="container shape-container d-flex align-items-center py-lg">
             <div class="col px-0 text-center">
                 <div class="row align-items-center justify-content-center">
