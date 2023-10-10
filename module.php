@@ -613,6 +613,21 @@ function widget_archive($title)
 <?php } ?>
 
 <?php
+    function widget_link($title) {
+    global $CACHE;
+    $link_cache = $CACHE->readCache('link');
+    ?>
+    <div class="col-md-4 widget">
+        <h5><?= $title ?></h5>
+        <ul>
+            <?php foreach ($link_cache as $value): ?>
+                <li><a class="footer-link" href="<?= $value['url'] ?>" title="<?= $value['des'] ?>" target="_blank"><?= $value['link'] ?></a></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+<?php } ?>
+
+<?php
 
 function topflg($top, $sortop = 'n', $sortid = null) {
     $ishome_flg = ' <small><i class="fa fa-bookmark"></i></small>';
