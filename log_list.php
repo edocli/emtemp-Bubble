@@ -44,7 +44,7 @@ if (!defined('EMLOG_ROOT')) {
                         <?php elseif (isset($author)):?><?= $author ?> 的文章
                         <?php elseif (isset($keyword)):?><?php $lognum = count($logs); ?>包含关键字 <?= $keyword ?> 的文章 ( <?= $lognum ?> )
                         <?php elseif (isset($record)):?><?= substr($record, 0, 4) . '年' . substr($record, 4) . '月' ?>的文章
-                        <?php else: ?>所有文章【
+                        <?php else: ?>所有文章
                         <?php endif; ?>
                     </h1>
                 </div>
