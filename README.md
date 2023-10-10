@@ -194,7 +194,15 @@ Open sourced under the `GNU GPL v3.0` license.
 + 模板基于[Argon Design System](https://www.creative-tim.com/product/argon-design-system)
 + 部分代码参照了 EMLOG 官方模板 Default
 
-# 更新历史
+# 更新日志
+
+## `0.1.2` 10/11/2023
+
++ [feat] 底部边栏新增链接板块
++ [feat] 新增404页面
++ [feat] 优化文章列表页的标题内容
++ [feat] 优化主题包的体积
++ [fix]  修复文章列表页无法正确展示随机背景图片的问题
 
 ## `0.1.1` 10/08/2023
 
