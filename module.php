@@ -32,7 +32,8 @@ function getRandomImage($str)
 }
 
 function printAricle($value, $flag)
-{ ?>
+{
+    ?>
     <?php if (!empty($value['log_cover'])) { ?>
     <a class="card shadow content-card list-image-card <?php if ($flag): ?>content-card-head<?php endif; ?>"
        href="<?= $value['log_url'] ?>">
@@ -51,7 +52,7 @@ function printAricle($value, $flag)
                         <span class="list-tag"><i class="fa fa-user-o"
                                                   aria-hidden="true"></i> <?php blog_author($value['author']); ?></span>
                     </div>
-                    <?= _g('subContent') ? subContent($value['log_description'],_g('subContentLen')?:200,1) : $value['log_description'] ?>
+                    <?= _g('subContent') ? subContent($value['log_description'], _g('subContentLen') ?: 200, 1) : $value['log_description'] ?>
                 </div>
             </div>
         </object>
@@ -73,13 +74,13 @@ function printAricle($value, $flag)
                         <span class="list-tag"><i class="fa fa-user-o"
                                                   aria-hidden="true"></i> <?php blog_author($value['author']); ?></span>
                     </div>
-                    <?= _g('subContent') ? subContent($value['log_description'],_g('subContentLen')?:200,1) : $value['log_description'] ?>
+                    <?= _g('subContent') ? subContent($value['log_description'], _g('subContentLen') ?: 200, 1) : $value['log_description'] ?>
                 </div>
             </div>
         </object>
     </a>
-<?php } ?>
 <?php }
+}
 
 function printCategory($sortID, $icon = 0)
 {
@@ -117,7 +118,6 @@ function printTag($blogid, $icon = 0)
 
 function pageList($inputString)
 {
-
     $inputString = preg_replace('/<a/', '<li><a', $inputString);
 
     $inputString = preg_replace('/a>/', 'a></li>', $inputString);
@@ -240,9 +240,8 @@ function blog_navi()
                                 href="<?= $value['url'] ?>" <?= $newtab ?>><?= $value['naviname'] ?></a></li>
     <?php endif ?>
     <?php endforeach ?>
-<?php } ?>
+<?php }
 
-<?php
 function blog_tool_ishome()
 {
     if (str_replace('?_pjax=%23pjax-container', '', trim(Dispatcher::setPath(), '/')) == '') {
@@ -302,9 +301,9 @@ function threadedComments($comments, $children)
         <?php } ?>
     </ol>
     <?php
-} ?>
+}
 
-<?php function viewComment($comnum, $comments, $logid, $ckname, $ckmail, $ckurl, $verifyCode, $allow_remark)
+function viewComment($comnum, $comments, $logid, $ckname, $ckmail, $ckurl, $verifyCode, $allow_remark)
 {
     extract($comments);
     $isNeedChinese = Option::get('comment_needchinese');
@@ -555,9 +554,9 @@ function threadedComments($comments, $children)
             })
         })
     </script>
-<?php } ?>
+<?php }
 
-<?php function widget_newcomm($title)
+function widget_newcomm($title)
 {
     global $CACHE;
     $com_cache = $CACHE->readCache('comment');
@@ -576,9 +575,8 @@ function threadedComments($comments, $children)
             <?php endforeach ?>
         </ul>
     </div>
-<?php } ?>
+<?php }
 
-<?php
 function widget_newlog($title)
 {
     global $CACHE;
@@ -592,9 +590,22 @@ function widget_newlog($title)
             <?php endforeach ?>
         </ul>
     </div>
-<?php } ?>
+<?php }
 
-<?php
+function widget_hotlog($title) {
+    $index_hotlognum = Option::get('index_hotlognum');
+    $Log_Model = new Log_Model();
+    $hotLogs = $Log_Model->getHotLog($index_hotlognum) ?>
+    <div class="col-md-4 widget">
+        <h5><?= $title ?></h5>
+        <ul>
+            <?php foreach ($hotLogs as $value): ?>
+                <li><a href="<?= Url::log($value['gid']) ?>" class="footer-link"><?= $value['title'] ?></a></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+<?php }
+
 function widget_archive($title)
 {
     $bar_id = "36";
@@ -610,10 +621,10 @@ function widget_archive($title)
             <?php endforeach ?>
         </ul>
     </div>
-<?php } ?>
+<?php }
 
-<?php
-    function widget_link($title) {
+function widget_link($title)
+{
     global $CACHE;
     $link_cache = $CACHE->readCache('link');
     ?>
@@ -621,15 +632,15 @@ function widget_archive($title)
         <h5><?= $title ?></h5>
         <ul>
             <?php foreach ($link_cache as $value): ?>
-                <li><a class="footer-link" href="<?= $value['url'] ?>" title="<?= $value['des'] ?>" target="_blank"><?= $value['link'] ?></a></li>
+                <li><a class="footer-link" href="<?= $value['url'] ?>" title="<?= $value['des'] ?>"
+                       target="_blank"><?= $value['link'] ?></a></li>
             <?php endforeach ?>
         </ul>
     </div>
-<?php } ?>
+<?php }
 
-<?php
-
-function topflg($top, $sortop = 'n', $sortid = null) {
+function topflg($top, $sortop = 'n', $sortid = null)
+{
     $ishome_flg = ' <small><i class="fa fa-bookmark"></i></small>';
     $issort_flg = ' <small><i class="fa fa-bookmark"></i></small>';
     if (blog_tool_ishome()) {
