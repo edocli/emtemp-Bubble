@@ -105,4 +105,7 @@ if (!defined('EMLOG_ROOT')) {
     </section>
 
 <?php
+
+editflg($logid, $author);
+
 include View::getView('footer');

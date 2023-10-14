@@ -69,7 +69,7 @@ function printAricle($value, $flag)
                                     datetime="<?= date('c', $value['date']) ?>"><?= date('Y-n-j', $value['date']) ?></time></span>
                         <span class="list-tag"><i class="fa fa-comments-o"
                                                   aria-hidden="true"></i> <?= $value['comnum'] ?> 条评论</span>
-                        <?php printCategory($value['logid'], 1); ?>
+                        <?php printCategory($value['sortid'], 1); ?>
                         <?php printTag($value['logid'], 1); ?>
                         <span class="list-tag"><i class="fa fa-user-o"
                                                   aria-hidden="true"></i> <?php blog_author($value['author']); ?></span>
@@ -203,8 +203,8 @@ function blog_navi()
         }
         if ($value['url'] == 'admin' && ISLOGIN):
             ?>
-            <li class="nav-item"><a href="<?= BLOG_URL ?>admin/" class="nav-link">管理</a></li>
-            <li class="nav-item"><a href="<?= BLOG_URL ?>admin/account.php?action=logout" class="nav-link">退出</a></li>
+            <li class="nav-item"><a href="admin" class="nav-link">管理</a></li>
+            <li class="nav-item"><a href="admin/account.php?action=logout" class="nav-link">退出</a></li>
             <?php
             continue;
         endif;
@@ -337,7 +337,7 @@ function viewComment($comnum, $comments, $logid, $ckname, $ckmail, $ckurl, $veri
                         </div>
                         <br/>
                         <form method="post" name="commentform" class="container"
-                              action="<?= BLOG_URL ?>index.php?action=addcom" id="comment-form"
+                              action="?action=addcom" id="comment-form"
                               is-chinese="<?= $isNeedChinese ?>" style="overflow: auto; zoom: 1;"
                               onsubmit="return myBlog.comSubmitTip()">
                             <input type="hidden" name="gid" value="<?= $logid ?>"/>
@@ -396,7 +396,7 @@ function viewComment($comnum, $comments, $logid, $ckname, $ckmail, $ckurl, $veri
                             </p>
                             <?php if ($verifyCode): ?>
                                 <div class="input-group">
-                                    <img src="http://localhost/include/lib/checkcode.php" id="captcha" alt="验证码">
+                                    <img src="include/lib/checkcode.php" id="captcha" alt="验证码">
                                     <input type="text" name="imgcode" class="form-control"
                                            maxlength="5"
                                            placeholder="验证码"
@@ -537,7 +537,7 @@ function viewComment($comnum, $comments, $logid, $ckname, $ckmail, $ckurl, $veri
              */
             captchaRefresh: function ($t) {
                 let timestamp = new Date().getTime();
-                $t.attr("src", "/include/lib/checkcode.php?" + timestamp)
+                $t.attr("src", "include/lib/checkcode.php?" + timestamp)
             },
         };
 
@@ -560,7 +560,6 @@ function widget_newcomm($title)
 {
     global $CACHE;
     $com_cache = $CACHE->readCache('comment');
-    $isGravatar = Option::get('isgravatar');
     ?>
     <div class="col-md-4 widget">
         <h5><?= $title ?></h5>
@@ -608,7 +607,6 @@ function widget_hotlog($title) {
 
 function widget_archive($title)
 {
-    $bar_id = "36";
     global $CACHE;
     $record_cache = $CACHE->readCache('record');
     ?>
@@ -648,4 +646,16 @@ function topflg($top, $sortop = 'n', $sortid = null)
     } elseif ($sortid) {
         echo $sortop == 'y' ? $issort_flg : '';
     }
+}
+
+function editflg($logid, $author) {
+    if(User::haveEditPermission() || $author == UID){
+        $editflg = BLOG_URL . 'admin/article.php?action=edit&gid=' . $logid;
+        ?>
+        <a href="<?= $editflg ?>">
+            <button id="adminbtn" class="btn btn-icon-only rounded-circle btn-primary admin-btn">
+                <span class="btn-inner--icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+            </button>
+        </a>
+    <?php }
 }

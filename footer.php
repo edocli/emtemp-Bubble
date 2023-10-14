@@ -3,6 +3,13 @@ if (!defined('EMLOG_ROOT')) {
     exit('error!');
 }
 ?>
+<?php if(ISLOGIN&&(!isset($logid))): ?>
+    <a href="admin">
+        <button id="adminbtn" class="btn btn-icon-only rounded-circle btn-primary admin-btn">
+            <span class="btn-inner--icon"><i class="fa fa-cogs" aria-hidden="true"></i></span>
+        </button>
+    </a>
+<?php endif; ?>
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
