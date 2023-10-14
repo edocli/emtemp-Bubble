@@ -18,7 +18,7 @@ if (!defined('EMLOG_ROOT')) {
             <div class="col-md-6">
                 <ul class="nav nav-footer justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo BLOG_URL ?>">首页</a>
+                        <a class="nav-link" href="<?= BLOG_URL ?>">首页</a>
                     </li>
                     <?php if (ISLOGIN): ?>
                         <li class="nav-item"><a class="nav-link" href="/admin">进入后台(<?= getUser(UID)['nickname'] ?>)</a></li>
@@ -93,12 +93,12 @@ if (!defined('EMLOG_ROOT')) {
             threshold: 700,
             effect: 'fadeIn',
             effectTime: 1000,
-            defaultImage: "<?php echo TEMPLATE_URL ?>images/Loading.gif"
+            defaultImage: "<?= TEMPLATE_URL ?>images/Loading.gif"
         });
         $("div[data-src]").Lazy({
             threshold: 700,
             effect: 'fadeIn',
-            placeholder: "<?php echo TEMPLATE_URL ?>images/Loading.gif",
+            placeholder: "<?= TEMPLATE_URL ?>images/Loading.gif",
             effectTime: 1000
         });
         <?php if(_g('katex')): ?>

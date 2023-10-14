@@ -51,9 +51,18 @@ if (!function_exists('_g')) {
         <div class="col px-0">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-6 text-center">
-                    <h1 class="text-white">这里空空如也</h1>
-                    <hr/>
-                    <a href="javascript:history.back()" class="btn btn-primary btn-neutral">返回上一页</a>
+                    <h1 class="text-white">写一下密码啦~</h1>
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="form-control" type="password" id="logpwd" name="logpwd" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <a href="javascript:history.back()" class="btn btn-secondary">返回</a>
+                            <input class="btn btn-primary btn-neutral" type="submit" value="提交">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

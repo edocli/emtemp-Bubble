@@ -40,7 +40,7 @@ if (!defined('EMLOG_ROOT')) {
                     <h1 class="text-white">
                         <!-- 分类页面 -->
                         <?php if($sort): ?>分类 <?= $sort['sortname']?> 下的文章
-                        <?php elseif (isset($tag)):?>包含标签 <?php echo $tag; ?> 的文章
+                        <?php elseif (isset($tag)):?>包含标签 <?= $tag ?> 的文章
                         <?php elseif (isset($author)):?><?= $author ?> 的文章
                         <?php elseif (isset($keyword)):?><?php $lognum = count($logs); ?>包含关键字 <?= $keyword ?> 的文章 ( <?= $lognum ?> )
                         <?php elseif (isset($record)):?><?= substr($record, 0, 4) . '年' . substr($record, 4) . '月' ?>的文章
