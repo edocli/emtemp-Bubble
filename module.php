@@ -339,7 +339,9 @@ function viewComment($comnum, $comments, $logid, $ckname, $ckmail, $ckurl, $veri
                         <form method="post" name="commentform" class="container"
                               action="?action=addcom" id="comment-form"
                               is-chinese="<?= $isNeedChinese ?>" style="overflow: auto; zoom: 1;"
-                              onsubmit="return myBlog.comSubmitTip()">
+                              onsubmit="return myBlog.comSubmitTip()"
+                              onblur="myBlog.comSubmitTip('judge')"
+                        >
                             <input type="hidden" name="gid" value="<?= $logid ?>"/>
                             <?php if (ISLOGIN): ?>
                                 <p>已登录为 <a no-pjax href="/admin"><?= getUser(UID)['nickname'] ?></a> | <a
@@ -396,7 +398,8 @@ function viewComment($comnum, $comments, $logid, $ckname, $ckmail, $ckurl, $veri
                             </p>
                             <?php if ($verifyCode): ?>
                                 <div class="input-group">
-                                    <img src="include/lib/checkcode.php" id="captcha" alt="验证码">
+                                    <img src="include/lib/checkcode.php" id="captcha" alt="验证码"
+                                         onclick="myBlog.captchaRefresh($(this))">
                                     <input type="text" name="imgcode" class="form-control"
                                            maxlength="5"
                                            placeholder="验证码"
@@ -540,19 +543,6 @@ function viewComment($comnum, $comments, $logid, $ckname, $ckmail, $ckurl, $veri
                 $t.attr("src", "include/lib/checkcode.php?" + timestamp)
             },
         };
-
-        /**
-         * 事件监听
-         */
-        $(document).ready(function () {
-
-            $("#captcha").click(function () {
-                myBlog.captchaRefresh($(this))
-            })
-            $("#comment-form").blur(function () {
-                myBlog.comSubmitTip('judge')
-            })
-        })
     </script>
 <?php }
 
@@ -569,7 +559,9 @@ function widget_newcomm($title)
                 $url = Url::comment($value['gid'], $value['page'], $value['cid']);
                 ?>
                 <li>
-                    <a href="<?= $url ?>" class="footer-link"><b><?= $value['name'] ?>: </b><?= $value['content'] ?></a>
+                    <a href="<?= $url ?>" class="footer-link">
+                        <b><?= $value['name'] ?>: </b><?= $value['content'] ?>
+                    </a>
                 </li>
             <?php endforeach ?>
         </ul>
@@ -585,13 +577,18 @@ function widget_newlog($title)
         <h5><?= $title ?></h5>
         <ul>
             <?php foreach ($newLogs_cache as $value): ?>
-                <li><a href="<?= Url::log($value['gid']) ?>" class="footer-link"><?= $value['title'] ?></a></li>
+                <li>
+                    <a href="<?= Url::log($value['gid']) ?>" class="footer-link">
+                        <?= $value['title'] ?>
+                    </a>
+                </li>
             <?php endforeach ?>
         </ul>
     </div>
 <?php }
 
-function widget_hotlog($title) {
+function widget_hotlog($title)
+{
     $index_hotlognum = Option::get('index_hotlognum');
     $Log_Model = new Log_Model();
     $hotLogs = $Log_Model->getHotLog($index_hotlognum) ?>
@@ -599,7 +596,11 @@ function widget_hotlog($title) {
         <h5><?= $title ?></h5>
         <ul>
             <?php foreach ($hotLogs as $value): ?>
-                <li><a href="<?= Url::log($value['gid']) ?>" class="footer-link"><?= $value['title'] ?></a></li>
+                <li>
+                    <a href="<?= Url::log($value['gid']) ?>" class="footer-link">
+                        <?= $value['title'] ?>
+                    </a>
+                </li>
             <?php endforeach ?>
         </ul>
     </div>
@@ -614,8 +615,11 @@ function widget_archive($title)
         <h5><?= $title ?></h5>
         <ul>
             <?php foreach ($record_cache as $value): ?>
-                <li><a href="<?= Url::record($value['date']) ?>" class="footer-link"><?= $value['record'] ?>
-                        &nbsp;(<?= $value['lognum'] ?>)</a></li>
+                <li>
+                    <a href="<?= Url::record($value['date']) ?>" class="footer-link">
+                        <?= $value['record'] ?> (<?= $value['lognum'] ?>)
+                    </a>
+                </li>
             <?php endforeach ?>
         </ul>
     </div>
@@ -630,10 +634,37 @@ function widget_link($title)
         <h5><?= $title ?></h5>
         <ul>
             <?php foreach ($link_cache as $value): ?>
-                <li><a class="footer-link" href="<?= $value['url'] ?>" title="<?= $value['des'] ?>"
-                       target="_blank"><?= $value['link'] ?></a></li>
+                <a class="footer-link" href="<?= $value['url'] ?>" title="<?= $value['des'] ?>" target="_blank"
+                   style="white-space: nowrap;">
+                    [<?= $value['link'] ?>]
+                </a>
             <?php endforeach ?>
         </ul>
+    </div>
+<?php }
+
+function widget_tag($title)
+{
+    global $CACHE;
+    $tag_cache = $CACHE->readCache('tags') ?>
+    <div class="col-md-4 widget">
+        <h5><?= $title ?></h5>
+        <ul>
+            <?php foreach ($tag_cache as $value): ?>
+                <a href="<?= Url::tag($value['tagurl']) ?>" title="<?= $value['usenum'] ?> 篇文章" class="footer-link"
+                   style="white-space: nowrap;">
+                    <?= $value['tagname'] ?> (<?= $value['usenum'] ?>)
+                </a>
+            <?php endforeach ?>
+        </ul>
+    </div>
+<?php }
+
+function widget_custom_text($title, $content)
+{ ?>
+    <div class="col-md-4 widget">
+        <h5><?= $title ?></h5>
+        <ul><?= $content ?></ul>
     </div>
 <?php }
 
@@ -648,8 +679,9 @@ function topflg($top, $sortop = 'n', $sortid = null)
     }
 }
 
-function editflg($logid, $author) {
-    if(User::haveEditPermission() || $author == UID){
+function editflg($logid, $author)
+{
+    if (User::haveEditPermission() || $author == UID) {
         $editflg = BLOG_URL . 'admin/article.php?action=edit&gid=' . $logid;
         ?>
         <a href="<?= $editflg ?>">

@@ -117,6 +117,8 @@ if (!function_exists('_g')) {
                             <button type="button" class="navbar-toggler" data-toggle="collapse"
                                     data-target="#navbar-default" aria-controls="navbar-default" aria-expanded="false"
                                     aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
                             </button>
                         </div>
                     </div>
