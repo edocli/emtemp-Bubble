@@ -653,7 +653,7 @@ function widget_tag($title)
             <?php foreach ($tag_cache as $value): ?>
                 <a href="<?= Url::tag($value['tagurl']) ?>" title="<?= $value['usenum'] ?> 篇文章" class="footer-link"
                    style="white-space: nowrap;">
-                    <?= $value['tagname'] ?> (<?= $value['usenum'] ?>)
+                    <?= $value['tagname'] ?>(<?= $value['usenum'] ?>)
                 </a>
             <?php endforeach ?>
         </ul>
