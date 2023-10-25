@@ -67,24 +67,12 @@ if (!function_exists('_g')) {
             <?php endif; ?>
         <?php endif; ?>
 
-        <!-- Viewer CSS -->
-        <?php if (_g('viewerEnable')): ?>
-            <link rel="stylesheet" type="text/css"
-                  href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.css"/>
-        <?php endif; ?>
-
         <!-- Jquery -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <!-- Custom CSS -->
         <?php if (_g('customCss')): ?>
             <style><?= _g('customCss') ?></style>
-        <?php endif; ?>
-
-        <!-- Viewer.js Plugin -->
-        <?php if (_g('viewerEnable')): ?>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/jquery-viewer@1.0.1/dist/jquery-viewer.min.js"></script>
         <?php endif; ?>
 
         <!-- MD5 Js -->

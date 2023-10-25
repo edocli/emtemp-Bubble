@@ -9,20 +9,22 @@ if (!defined('EMLOG_ROOT')) {
     <main>
 <?php if (blog_tool_ishome()): ?>
     <section class="section section-lg section-hero section-shaped" style="height: 100vh;">
-        <?php printBackground(_g('indexImage'), _g('bubbleShow')); ?>
+        <?php printBackground(getRandomImage(_g('indexImage')), _g('bubbleShow')); ?>
         <div class="container shape-container d-flex align-items-center py-lg">
             <div class="col px-0">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-6 text-center">
-                        <div class="index-avatar-container">
-                            <img src="<?php
-                            if (_g('avatarUrl') == '') {
-                                echo TEMPLATE_URL . "images/avatar.png";
-                            } else {
-                                echo _g('avatarUrl');
-                            }
-                            ?>" class="index-avatar" alt="avatar">
-                        </div>
+                        <?php if(_g('avatarEnable')): ?>
+                            <div class="index-avatar-container">
+                                <img src="<?php
+                                if (_g('avatarUrl') == '') {
+                                    echo TEMPLATE_URL . "images/avatar.png";
+                                } else {
+                                    echo _g('avatarUrl');
+                                }
+                                ?>" class="index-avatar" alt="avatar">
+                            </div>
+                        <?php endif; ?>
                         <h1 class="text-white"><?= $blogname ?></h1>
                         <hr/>
                         <p class="lead text-white"><?= $bloginfo ?></p>
@@ -39,9 +41,9 @@ if (!defined('EMLOG_ROOT')) {
                 <div class="row align-items-center justify-content-center">
                     <h1 class="text-white">
                         <!-- 分类页面 -->
-                        <?php if($sort): ?>分类 <?= $sort['sortname']?> 下的文章
+                        <?php if(isset($sort)): ?>分类 <?= $sort['sortname']?> 下的文章
                         <?php elseif (isset($tag)):?>包含标签 <?= $tag ?> 的文章
-                        <?php elseif (isset($author)):?><?= $author ?> 的文章
+                        <?php elseif (isset($author)):?><?= getUser($author)['nickname'] ?> 的文章
                         <?php elseif (isset($keyword)):?><?php $lognum = count($logs); ?>包含关键字 <?= $keyword ?> 的文章 ( <?= $lognum ?> )
                         <?php elseif (isset($record)):?><?= substr($record, 0, 4) . '年' . substr($record, 4) . '月' ?>的文章
                         <?php else: ?>所有文章

@@ -634,9 +634,9 @@ function widget_link($title)
         <h5><?= $title ?></h5>
         <ul>
             <?php foreach ($link_cache as $value): ?>
-                <a class="footer-link" href="<?= $value['url'] ?>" title="<?= $value['des'] ?>" target="_blank"
-                   style="white-space: nowrap;">
-                    [<?= $value['link'] ?>]
+                <a href="<?= $value['url'] ?>" title="<?= $value['des'] ?>" target="_blank"
+                   style="white-space: nowrap;" class="badge badge-secondary footer-link">
+                    <?= $value['link'] ?>
                 </a>
             <?php endforeach ?>
         </ul>
@@ -651,7 +651,7 @@ function widget_tag($title)
         <h5><?= $title ?></h5>
         <ul>
             <?php foreach ($tag_cache as $value): ?>
-                <a href="<?= Url::tag($value['tagurl']) ?>" title="<?= $value['usenum'] ?> 篇文章" class="footer-link"
+                <a href="<?= Url::tag($value['tagurl']) ?>" title="<?= $value['usenum'] ?> 篇文章" class="badge badge-secondary footer-link"
                    style="white-space: nowrap;">
                     <?= $value['tagname'] ?>(<?= $value['usenum'] ?>)
                 </a>

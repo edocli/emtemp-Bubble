@@ -98,9 +98,9 @@ myFunction();
 
 该项用以选择 prism.js 代码高亮的主题配色。
 
-### viewer.js 图片查看器
+### ~~viewer.js 图片查看器~~（有问题，暂时下线）
 
-该项用以选择是否启用 viewer.js 图片查看器（点击放大）。
+~~该项用以选择是否启用 viewer.js 图片查看器（点击放大）。~~
 
 ### TOC 文章目录
 
@@ -186,7 +186,7 @@ myFunction();
 
 # License
 
-Open sourced under the `GNU GPL v3.0` license.
+Open sourced under the `GNU GPL v3` license.
 
 # 其他
 

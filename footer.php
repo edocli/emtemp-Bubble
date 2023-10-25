@@ -3,13 +3,14 @@ if (!defined('EMLOG_ROOT')) {
     exit('error!');
 }
 ?>
-<?php if(ISLOGIN&&(!isset($logid))): ?>
+<?php if(ISLOGIN&&(!isset($editflg))): ?>
     <a href="admin">
         <button id="adminbtn" class="btn btn-icon-only rounded-circle btn-primary admin-btn">
             <span class="btn-inner--icon"><i class="fa fa-cogs" aria-hidden="true"></i></span>
         </button>
     </a>
 <?php endif; ?>
+</main>
 <!-- Footer -->
 <footer class="footer">
     <div class="container">
@@ -131,32 +132,7 @@ if (!defined('EMLOG_ROOT')) {
         } catch (e) {
         }
         <?php endif; ?>
-        <?php if (_g('viewerEnable')): ?>
-        setTimeout(() => {
-            $('.content').viewer({
-                url: 'data-src'
-            })
-        }, 300)
-        <?php endif; ?>
     }
-
-    <?php if (_g('viewerEnable')): ?>
-    function destroy() {
-        // viewerjs
-        let viewer = $('.content').data('viewer');
-        if (viewer) {
-            viewer.destroy()
-        }
-    }
-
-    window.addEventListener("popstate", function () {
-        setTimeout(() => {
-            $('.content').viewer({
-                url: 'data-src'
-            })
-        }, 300)
-    }, false);
-    <?php endif; ?>
 </script>
 <?php if (_g('Pjax')): ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
@@ -172,10 +148,6 @@ if (!defined('EMLOG_ROOT')) {
             pgid = start_progress()
             $(".black-cover").fadeIn(400)
             $('html,body').animate({scrollTop: $('html').offset().top}, 500)
-
-            <?php if (_g("viewerEnable")): ?>
-            destroy()
-            <?php endif; ?>
 
         }).on('pjax:complete', function () {
             $(".black-cover").fadeOut(400)

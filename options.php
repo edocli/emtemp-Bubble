@@ -15,8 +15,17 @@ $options = [
     'favicon' => [
         'labels' => 'setting',
         'type' => 'text',
-        'name' => '站点 LOGO 地址',
-        'description' => '在这里填入一个图片 URL 地址，以在网站标题前加上一个 LOGO，留空则使用默认 Favicon'
+        'name' => '站点 Faxicon 地址',
+        'description' => '在这里填入一个图片 URL 地址，以在浏览器标题前加上一个 Favicon，留空则使用默认 Favicon'
+    ],
+    'avatarEnable' => [
+        'labels' => 'setting',
+        'type' => 'checkon',
+        'name' => '首页头像',
+        'values' => [
+            '1' => 1,
+        ],
+        'description' => '选择是否在首页显示头像'
     ],
     'avatarUrl' => [
         'labels' => 'setting',
@@ -27,8 +36,9 @@ $options = [
     'indexImage' => [
         'labels' => 'setting',
         'type' => 'text',
-        'name' => '首页背景图像地址',
-        'description' => '在这里填入一个图片 URL 地址，以设定网站首页的头图，留空则使用默认紫色渐变背景'
+        'name' => '随机首页背景图像地址',
+        'multi' => true,
+        'description' => '在这里填入一个或多个图片 URL 地址，每行一个，<strong>请勿包含多余字符</strong>，以设定网站首页的头图，留空则使用默认紫色渐变背景'
     ],
     'randomImage' => [
         'labels' => 'setting',
@@ -111,15 +121,6 @@ $options = [
             'prism-twilight' => 'twilight',
         ],
         'description' => '选择 prism.js 代码高亮的主题配色'
-    ],
-    'viewerEnable' => [
-        'labels' => 'setting',
-        'type' => 'checkon',
-        'name' => 'viewer.js 图片查看器',
-        'values' => [
-            '1' => 1,
-        ],
-        'description' => '选择是否启用 viewer.js 图片查看器（点击放大）'
     ],
     'toc' => [
         'labels' => 'setting',
