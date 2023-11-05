@@ -204,14 +204,37 @@ if (!defined('EMLOG_ROOT')) {
     </div>
 </div>
 <script>
-    function alert(main, detail) {
+    function alert(main, detail, time=0) {
         $("#msgMain").html(main)
         if (detail) $("#msgDetail").html(detail)
         else $("#msgDetail").html("")
         $("#modal-notification").show("normal");
+        if (time===0) return
+        setTimeout(function() {
+            $("#modal-notification").hide("normal");
+        }, time)
     }
 
     init()
+</script>
+<?php if(blog_tool_ishome()&&_g('notice')):?>
+    <script>alert("<?=_g('noticeTittle')?>","<?=_g('noticeContent')?>",<?=_g('noticeTime')?>);</script>
+<?php endif;?>
+<script>
+    $(document).ready(function(){
+        $("a").each(function(){
+            var link = $(this);
+            var href = link.attr("href");
+            if (href && !href.startsWith('#') && !href.includes(window.location.host)) {
+                link.click(function(event){
+                    var proceed = confirm("您即将离开本站，是否继续？");
+                    if(!proceed){
+                        event.preventDefault();
+                    }
+                });
+            }
+        });
+    });
 </script>
 </body>
 </html>

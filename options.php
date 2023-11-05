@@ -156,4 +156,33 @@ $options = [
         'name' => '自动摘要截取长度',
         'description' => '在这里填入一个数字，以设定摘要截取长度，留空则默认截取 200 个字符'
     ],
+    'notice' => [
+        'labels' => 'setting',
+        'type' => 'checkon',
+        'name' => '公告',
+        'default' => 0,
+        'values' => [
+            '1' => 1,
+        ],
+        'description' => '选择是否启用公告'
+    ],
+    'noticeTitle' => [
+        'labels' => 'setting',
+        'type' => 'text',
+        'name' => '公告标题',
+        'description' => '在这里填入公告标题'
+    ],
+    'noticeContent' => [
+        'labels' => 'setting',
+        'type' => 'text',
+        'multi' => true,
+        'name' => '公告内容',
+        'description' => '在这里填入公告内容，支持 HTML 代码'
+    ],
+    'noticeTime' => [
+        'labels' => 'setting',
+        'type' => 'text',
+        'name' => '公告展示时间',
+        'description' => '在这里填入公告展示时间，单位为毫秒，留空则需手动关闭'
+    ],
 ];
