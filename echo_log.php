@@ -106,6 +106,6 @@ if (!defined('EMLOG_ROOT')) {
 
 <?php
 
-editflg($logid, $author);
+$authflg = editflg($logid, $author);
 
 include View::getView('footer');

@@ -689,5 +689,8 @@ function editflg($logid, $author)
                 <span class="btn-inner--icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
             </button>
         </a>
-    <?php }
+        <?php
+        return true;
+    }
+    return false;
 }
