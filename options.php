@@ -36,7 +36,7 @@ $options = [
     'favicon' => [
         'labels' => 'nv-favicon',
         'type' => 'text',
-        'name' => '站点 Faxicon 地址',
+        'name' => '站点 Favicon 地址',
         'description' => '在这里填入一个图片 URL 地址，以在浏览器标题前加上一个 Favicon，留空则使用默认 Favicon'
     ],
     'avatarEnable' => [
