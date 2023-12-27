@@ -3,6 +3,19 @@ if (!defined('EMLOG_ROOT')) {
     exit('error!');
 }
 ?>
+<?php
+$log_content = preg_replace_callback(
+    '/<img\s+src="([^"]+)"(?:\s+alt="([^"]*)")?(?:\s+title="([^"]*)")?\s*\/?>/i',
+    function ($matches) {
+        // 构建 data-caption 属性
+        $caption = !empty($matches[2]) ? $matches[2] : (!empty($matches[3]) ? $matches[3] : '');
+
+        // 返回更新后的 <img> 标签
+        return '<a href="' . $matches[1] . '" data-fancybox="gallery"' . ($caption ? ' data-caption="' . $caption . '"' : '') . '><img src="' . $matches[1] . '" /></a>';
+    },
+    $log_content
+);
+?>
 
     <main>
 <?php if (_g('toc')) : ?>

@@ -84,6 +84,14 @@ if (!function_exists('_g')) {
         <script type="text/javascript"
                 src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.11/jquery.lazy.plugins.min.js"></script>
 
+        <!-- fancybox -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.32/fancybox/fancybox.umd.js"></script>
+        <link
+                rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.32/fancybox/fancybox.min.css"
+        />
+
+
         <?php doAction('index_head') ?>
     </head>
 <body>

@@ -236,5 +236,9 @@ if (!defined('EMLOG_ROOT')) {
         });
     });
 </script>
+<script>
+    Fancybox.bind("[data-fancybox]", {
+    });
+</script>
 </body>
 </html>
