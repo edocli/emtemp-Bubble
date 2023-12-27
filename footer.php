@@ -240,5 +240,8 @@ if (!defined('EMLOG_ROOT')) {
     Fancybox.bind("[data-fancybox]", {
     });
 </script>
+<script>
+    <?= _g('customJs') ?>
+</script>
 </body>
 </html>
