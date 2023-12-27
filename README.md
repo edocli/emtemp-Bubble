@@ -214,6 +214,15 @@ Open sourced under the `GNU GPL v3` license.
 
 # 更新日志
 
+## `1.1.0` 12/27/2023
+
++ [feat] 增加公告功能
++ [feat] 增加Fancybox图片灯箱功能（替代Viewer.js）
++ [feat] 增加使用创始人头像作为首页头像的功能
++ [feat] 增加自定义JS的设置项
++ [feat] 优化设置页逻辑
++ [fix] 修复作者进入文章页不显示编辑按钮的问题
+
 ## `1.0.1` 10/26/2023
 
 + [feat] 支持首页选择是否展示头像
