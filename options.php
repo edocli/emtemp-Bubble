@@ -27,10 +27,20 @@ $options = [
         ],
         'description' => '选择是否在首页显示头像'
     ],
+    'avatarFrom' =>[
+        'labels' => 'setting',
+        'type' => 'radio',
+        'name' => '首页头像源',
+        'values' => [
+            'admin' => '创始人头像',
+            'url' => 'URL',
+        ],
+        'description' => '选择首页头像的来源，选择创始人头像会自动获取后台设置的创始人用户头像，若选择URL请在下方“首页头像URL地址”填入'
+    ],
     'avatarUrl' => [
         'labels' => 'setting',
         'type' => 'text',
-        'name' => '首页头像地址',
+        'name' => '首页头像URL地址',
         'description' => '在这里填入一个图片 URL 地址，以在首页显示一个头像，留空则使用默认头像'
     ],
     'indexImage' => [

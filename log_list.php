@@ -17,10 +17,11 @@ if (!defined('EMLOG_ROOT')) {
                         <?php if(_g('avatarEnable')): ?>
                             <div class="index-avatar-container">
                                 <img src="<?php
-                                if (_g('avatarUrl') == '') {
-                                    echo TEMPLATE_URL . "images/avatar.png";
+                                $defaultAvatar = TEMPLATE_URL . "images/avatar.png";
+                                if (_g('avatarFrom') == 'URL') {
+                                    echo _g('avatarUrl') ?: $defaultAvatar;
                                 } else {
-                                    echo _g('avatarUrl');
+                                    echo getUser(1)['photo'] ?: $defaultAvatar;
                                 }
                                 ?>" class="index-avatar" alt="avatar">
                             </div>
