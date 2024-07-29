@@ -27,7 +27,7 @@ if (!function_exists('_g')) {
     if (empty(_g('favicon'))) {
         echo 'favicon.ico';
     } else {
-        _g('favicon');
+        echo _g('favicon');
     }
     ?>" rel="icon">
 
