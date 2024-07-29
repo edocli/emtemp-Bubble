@@ -40,7 +40,7 @@ if (!function_exists('_g')) {
         ?>" rel="icon">
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link href="https://fonts.font.im/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
         <!-- FontAwesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
