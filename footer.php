@@ -46,10 +46,10 @@ if (!defined('EMLOG_ROOT')) {
     </button>
 </a>
 <!-- Core -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- Optional plugins -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/headroom/0.11.0/headroom.min.js"></script>
 <!-- Theme JS -->
 <script src="<?= TEMPLATE_URL ?>assets/js/argon.min.js"></script>
 <script src="<?= TEMPLATE_URL ?>assets/js/bbrender.js"></script>
@@ -135,7 +135,7 @@ if (!defined('EMLOG_ROOT')) {
     }
 </script>
 <?php if (_g('Pjax')): ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery.pjax/2.0.1/jquery.pjax.min.js"></script>
     <script src="<?= TEMPLATE_URL ?>assets/js/progress.js"></script>
     <script>
         let pgid = 0;
@@ -174,18 +174,18 @@ if (!defined('EMLOG_ROOT')) {
 <?php endif; ?>
 <!-- KaTeX JS -->
 <?php if (_g('katex')): ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/contrib/auto-render.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/KaTeX/0.11.1/contrib/auto-render.min.js"></script>
 <?php endif; ?>
 <!-- Prism JS -->
 <?php if (_g('prismjs')): ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/toolbar/prism-toolbar.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/show-language/prism-show-language.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/prism/1.20.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/prism/1.20.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/prism/1.20.0/plugins/show-language/prism-show-language.min.js"></script>
+    <script src="https://cdnjs.loli.net/ajax/libs/prism/1.20.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
     <?php if (_g('prismLine')): ?>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdnjs.loli.net/ajax/libs/prism/1.20.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
     <?php endif; ?>
 <?php endif; ?>
 <!-- Alert -->

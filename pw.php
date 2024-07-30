@@ -27,12 +27,12 @@ if (!function_exists('_g')) {
     if (empty(_g('favicon'))) {
         echo 'favicon.ico';
     } else {
-        _g('favicon');
+       echo _g('favicon');
     }
     ?>" rel="icon">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.font.im/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
     <!-- Main CSS -->
     <link type="text/css" href="<?= TEMPLATE_URL ?>assets/css/main.min.css" rel="stylesheet">

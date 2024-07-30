@@ -35,15 +35,15 @@ if (!function_exists('_g')) {
         if (empty(_g('favicon'))) {
             echo 'favicon.ico';
         } else {
-            _g('favicon');
+            echo _g('favicon');
         }
         ?>" rel="icon">
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link href="https://fonts.font.im/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
         <!-- FontAwesome -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        <link href="https://cdnjs.loli.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
               rel="stylesheet">
 
         <!-- Main CSS -->
@@ -52,7 +52,7 @@ if (!function_exists('_g')) {
         <!-- KaTeX CSS -->
         <?php if (_g('katex')): ?>
             <link rel="stylesheet" type="text/css"
-                  href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+                  href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css">
         <?php endif; ?>
 
         <!-- PrismJS CSS -->
@@ -60,15 +60,15 @@ if (!function_exists('_g')) {
             <link rel="stylesheet" type="text/css"
                   href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/<?= _g('prismTheme') ?>.min.css"/>
             <link rel="stylesheet" type="text/css"
-                  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/toolbar/prism-toolbar.min.css"/>
+                  href="https://cdn.bootcdn.net/ajax/libs/prism/1.20.0/plugins/toolbar/prism-toolbar.min.css"/>
             <?php if (_g('prismLine')): ?>
                 <link rel="stylesheet" type="text/css"
-                      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/line-numbers/prism-line-numbers.min.css"/>
+                      href="https://cdn.bootcdn.net/ajax/libs/prism/1.20.0/plugins/line-numbers/prism-line-numbers.min.css"/>
             <?php endif; ?>
         <?php endif; ?>
 
         <!-- Jquery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <!-- Custom CSS -->
         <?php if (_g('customCss')): ?>
@@ -76,19 +76,19 @@ if (!function_exists('_g')) {
         <?php endif; ?>
 
         <!-- MD5 Js -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
 
         <!-- LazyLoad Js -->
         <script type="text/javascript"
-                src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.11/jquery.lazy.min.js"></script>
+                src="https://cdn.bootcdn.net/ajax/libs/jquery.lazy/1.7.11/jquery.lazy.min.js"></script>
         <script type="text/javascript"
-                src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.11/jquery.lazy.plugins.min.js"></script>
+                src="https://cdn.bootcdn.net/ajax/libs/jquery.lazy/1.7.11/jquery.lazy.plugins.min.js"></script>
 
         <!-- fancybox -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.32/fancybox/fancybox.umd.js"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.32/fancybox/fancybox.umd.min.js"></script>
         <link
                 rel="stylesheet"
-                href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.32/fancybox/fancybox.min.css"
+                href="https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.32/fancybox/fancybox.min.css"
         />
 
 
