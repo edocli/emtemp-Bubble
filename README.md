@@ -206,11 +206,13 @@ myFunction();
 
 Open sourced under the `GNU GPL v3` license.
 
-# 其他
+# 致谢
 
-+ 模板移植自由[三硝基豆腐](https://github.com/trinitrotofu)、[Rorical](https://github.com/Liupaperbox)和[Totorato](https://github.com/totorato)三人共同完成的Typecho [Bubble](https://github.com/trinitrotofu/Bubble)主题
-+ 模板基于[Argon Design System](https://www.creative-tim.com/product/argon-design-system)
++ 模板移植自由[三硝基豆腐](https://github.com/trinitrotofu)、[Rorical](https://github.com/Liupaperbox)和[Totorato](https://github.com/totorato)三人共同完成的[Typecho Bubble](https://github.com/trinitrotofu/Bubble)主题
++ 模板基于[Argon Design System](https://www.creative-tim.com/product/argon-design-system)编写
 + 部分代码参照了 EMLOG 官方模板 Default
++ [snow](https://github.com/emlog)为此模板的编写提供了大量支持
++ 社区维护人员 [星河与彩虹](https://github.com/xhych)
 
 # 更新日志
 
